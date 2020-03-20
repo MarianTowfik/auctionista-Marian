@@ -34,6 +34,16 @@ app.get("/data/:table", async (req, res) => {
   res.json(result)
 })
 
+app.get("/data/6_latest_bid/:id", async (req, res) => {
+  let query = "SELECT * FROM 6_latest_bid WHERE bid_item = ?"
+  let result = await db.query(query, [req.params.id])
+  res.json(result)
+})
+
+
+
+
+
 // route där front-end skickar data till databasen
 app.post("/data/users", async (req, res) => {
   console.log("req.body", req.body)
